@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import noUiSlider from "nouislider";
+import { VirusService } from 'src/app/services/virus.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: "app-index",
-  templateUrl: "index.component.html"
+  templateUrl: "index.component.html",
 })
 export class IndexComponent implements OnInit, OnDestroy {
   isCollapsed = true;
@@ -13,38 +14,47 @@ export class IndexComponent implements OnInit, OnDestroy {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
-  constructor() {}
+
+  public confirmed: any;
+  public deaths: any;
+  public recovered: any;
+  public pums: any;
+  public subTitle: any;
+  
+  public displayedColumns = ['residence', 'confirmedCase'];
+  public cases: any;
+  // public dataSource = this.cases.data;
+  
+
+  constructor( private virusService: VirusService ) {}
+
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
   }
+
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
 
-    var slider = document.getElementById("sliderRegular");
-
-    noUiSlider.create(slider, {
-      start: 40,
-      connect: false,
-      range: {
-        min: 0,
-        max: 100
-      }
-    });
-
-    var slider2 = document.getElementById("sliderDouble");
-
-    noUiSlider.create(slider2, {
-      start: [20, 60],
-      connect: true,
-      range: {
-        min: 0,
-        max: 100
-      }
-    });
+    this.getCases();
   }
+
   ngOnDestroy() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("index-page");
   }
+
+  getCases() {
+    this.virusService.getCases().subscribe((data) => {
+      this.subTitle = data.title;
+      this.confirmed = data.cases[0].confirmed;
+      this.deaths = data.cases[0].deaths;
+      this.recovered = data.cases[0].recovered;
+      this.pums = data.cases[0].pums;
+      this.cases = new MatTableDataSource(data.casesByResidence);
+      console.log(this.cases);
+
+    });
+  }
+
 }

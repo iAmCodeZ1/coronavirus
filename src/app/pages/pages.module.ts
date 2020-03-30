@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { MatTableModule } from '@angular/material/table';
 
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
@@ -28,6 +29,7 @@ import { LandingpageComponent } from "./examples/landingpage/landingpage.compone
     BrowserModule,
     FormsModule,
     RouterModule,
+    MatTableModule,
     BsDropdownModule.forRoot(),
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
