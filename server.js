@@ -10,6 +10,6 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'dist/blk-design-system-angular')));
 
-app.use('/api/virus', virus);
+app.use('/virus', virus);
 
 app.listen(port, () => console.log("Server running in port: " + port));
