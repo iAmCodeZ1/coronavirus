@@ -23,8 +23,6 @@ export class IndexComponent implements OnInit, OnDestroy {
   
   public displayedColumns = ['residence', 'confirmedCase'];
   public cases: any;
-  // public dataSource = this.cases.data;
-  
 
   constructor( private virusService: VirusService ) {}
 
@@ -52,8 +50,6 @@ export class IndexComponent implements OnInit, OnDestroy {
       this.recovered = data.cases[0].recovered;
       this.pums = data.cases[0].pums;
       this.cases = new MatTableDataSource(data.casesByResidence);
-      console.log(this.cases);
-
     });
   }
 
