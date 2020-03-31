@@ -103,6 +103,11 @@
 
 // My own customization
 
+html {
+    --scrollbarBG: #1f2251;
+    --thumbBG: #3e449e;
+  }
+
 .main {
     margin-top: -10rem;
 }
@@ -111,6 +116,22 @@
     height: 400px;
     overflow-y: scroll;
 }
+
+.data-table::-webkit-scrollbar {
+    width: 11px;
+  }
+  .data-table {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  .data-table::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  .data-table::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+  }
 
 table {
     width: 100%;
