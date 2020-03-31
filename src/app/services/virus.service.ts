@@ -10,7 +10,7 @@ export class VirusService {
   constructor(private http: HttpClient) { }
 
   getCases(): Observable<any> {
-    return this.http.get('/virus');
+    return this.http.get('virus');
   }
 
 }
