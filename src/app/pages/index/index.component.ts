@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 import { VirusService } from 'src/app/services/virus.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: "app-index",
@@ -21,8 +22,8 @@ export class IndexComponent implements OnInit, OnDestroy {
   public pums: any;
   public subTitle: any;
   
-  public displayedColumns = ['residence', 'confirmedCase'];
-  public cases: any;
+  public displayedColumns = ['residence', 'quantity'];
+  public dataSource;
 
   constructor( private virusService: VirusService ) {}
 
@@ -30,7 +31,10 @@ export class IndexComponent implements OnInit, OnDestroy {
     element.scrollIntoView({ behavior: "smooth" });
   }
 
+  @ViewChild(MatSort) sort: MatSort;
+
   ngOnInit() {
+
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
 
@@ -49,7 +53,7 @@ export class IndexComponent implements OnInit, OnDestroy {
       this.deaths = data.cases[0].deaths;
       this.recovered = data.cases[0].recovered;
       this.pums = data.cases[0].pums;
-      this.cases = new MatTableDataSource(data.casesByResidence);
+      this.dataSource = new MatTableDataSource(data.casesByResidence) ;
     });
   }
 

@@ -98,18 +98,18 @@
         <p>Confirmed Cases by Residences</p>
       </div>
       
-      <div class="data-table mat-elevation-z8 mb-5">
-        <table mat-table [dataSource]="cases">
+      <div class="data-table mb-5">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
 
           <!-- Residences Column -->
           <ng-container matColumnDef="residence">
-            <th mat-header-cell *matHeaderCellDef>Residence</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Residence</th>
             <td mat-cell *matCellDef="let cases">{{cases.residence}}</td>
           </ng-container>
 
           <!-- Confirmed cases column -->
-          <ng-container matColumnDef="confirmedCase">
-            <th mat-header-cell *matHeaderCellDef>Confirmed Case</th>
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Confirmed Case</th>
             <td mat-cell *matCellDef="let cases">{{cases.quantity}}</td>
           </ng-container>
 
@@ -152,11 +152,11 @@
           </ul>
         </div>
         <div class="col-md-3">
-          <h3 class="title">Follow us:</h3>
+          <h3 class="title">Follow me:</h3>
           <div class="btn-wrapper profile">
             <a
               class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
-              href="https://www.facebook.com/creativetim"
+              href="https://web.facebook.com/samley13"
               target="_blank"
             >
               <i class="fab fa-facebook-square"> </i>
