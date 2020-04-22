@@ -47,14 +47,15 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
 
   getCases() {
-    this.virusService.getCases().subscribe((data) => {
-      this.subTitle = data.title;
-      this.confirmed = data.cases[0].confirmed;
-      this.deaths = data.cases[0].deaths;
-      this.recovered = data.cases[0].recovered;
-      this.pums = data.cases[0].pums;
-      this.dataSource = new MatTableDataSource(data.casesByResidence) ;
-    });
+
+    // this.virusService.getCases().subscribe((data) => {
+    //   this.subTitle = data.title;
+    //   this.confirmed = data.cases[0].confirmed;
+    //   this.deaths = data.cases[0].deaths;
+    //   this.recovered = data.cases[0].recovered;
+    //   this.pums = data.cases[0].pums;
+    //   this.dataSource = new MatTableDataSource(data.casesByResidence) ;
+    // });
   }
 
 }
